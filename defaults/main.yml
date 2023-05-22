@@ -1,0 +1,23 @@
+---
+callsign: 'N0CALL'
+ax_25_ports:
+  tnc:
+    name: tnc
+    suffix: 15
+    port_speed: 57600
+    packet_size: 255
+    window_size: 7
+    comment: "NinoTNC"
+    nr_min_obs: 5 
+    nr_def_qual: 203
+    nr_worst_qual: 129
+    nr_verbose: 1
+    type: kiss
+    tty: /dev/ttyACM0
+nr_ports:
+  netrom:
+    name: netrom
+    suffix: 14
+    alias: NCALL
+    paclen: 236
+    comment: "Linux Switch Port"

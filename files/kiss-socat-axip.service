@@ -1,0 +1,14 @@
+# /etc/systemd/system/kiss-socat-axip.service
+[Unit]
+Description=Socat interconnect for AX25 AXIP
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/var/ax25
+ExecStart=socat -d -d -ly pty,raw,echo=0,link=/var/ax25/pty/axip1 pty,raw,echo=0,link=/var/ax25/pty/axip2
+ExecStartPost=/usr/bin/bash -c 'while ! [ -h /var/ax25/pty/axip2 ]; do sleep 1 ; done'
+ExecStopPost=rm /var/ax25/pty/axip1 /var/ax25/pty/axip2
+
+[Install]
+WantedBy=multi-user.target

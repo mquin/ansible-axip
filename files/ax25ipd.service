@@ -1,0 +1,14 @@
+# /etc/systemd/system/ax25ipd.service
+[Unit]
+Description=AX.25 over IP (AXIP) daemon
+After=network.target
+StartLimitInterval=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/usr/sbin/ax25ipd
+
+[Install]
+WantedBy=multi-user.target

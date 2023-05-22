@@ -1,0 +1,10 @@
+[Unit]
+Description=AX25 KISS TNC %I
+
+[Service]
+ExecStart=/usr/sbin/kissattach $TNC_TTY %i
+ExecStop=pkill -f "kissattach $TNC_TTY %i"
+ExecStartPost=/usr/bin/bash -c 'while ! /usr/sbin/kissparms -c 1 -p %i; do sleep 1; done'
+TimeoutStopSec=5
+[Install]
+WantedBy=multi-user.target

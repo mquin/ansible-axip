@@ -1,0 +1,11 @@
+# /etc/ax25/ax25ipd.conf
+socket udp 10095
+mode tnc
+device /var/ax25/pty/axip1
+speed 115200
+loglevel 2
+{% for item in ax_25_ports %}
+  {% if ax_25_ports[item].type == 'axip' %}
+route {{ ax_25_ports[item].axip_remote_callsign }} {{ ax_25_ports[item].axip_remote_address }}
+  {% endif %}
+{% endfor %}
