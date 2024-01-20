@@ -4,9 +4,10 @@ mode tnc
 device /var/ax25/pty/axip1
 speed 115200
 loglevel 2
+broadcast NODES-0
 {% for item in ax_25_ports %}
   {% if ax_25_ports[item].type == 'axip' %}
-route {{ ax_25_ports[item].axip_remote_callsign }} {{ ax_25_ports[item].axip_remote_address }}
+route {{ ax_25_ports[item].axip_remote_callsign }} {{ ax_25_ports[item].axip_remote_address }} b
   {% endif %}
 {% endfor %}
 
